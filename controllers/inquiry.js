@@ -2,7 +2,7 @@ const models = require('../models');
 const { validate } = require('./utility');
 
 const inquiry = async (req, res, next) => {
-  const token = req.headers['authorization'].slice(7);
+  const token = req.headers['authorization'];
   let decodeToken = await validate(token);
   const { user_id } = decodeToken;
   let emailStatus = await models.tbl_user.findOne({ where: { u_id: user_id } });
